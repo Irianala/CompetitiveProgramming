@@ -11,32 +11,7 @@ import java.util.Set;
 
 public class InterviewPractice {
 	public static void main(String[] args) {
-		String[] crypt = new String[] {
-				"TEN",
-				"TWO",
-				"ONE"
-		};
-		char[][] solution = new char[][] {
-			{'O', '1'},
-			{'T', '0'},
-			{'W', '9'},
-			{'E', '5'},
-			{'N', '4'}
-		};
-		
-		char[][] solun = new char[][] {
-			{'A', '1'},
-			{'B', '3'},
-			{'C', '4'}
-		};
-		String[] cry = new String[] {
-			"AAAAAAAAAAAAAA", 
-			 "BBBBBBBBBBBBBB", 
-			 "CCCCCCCCCCCCCC"
-		};
-		
-		
-		isCryptSolution(cry, solun);
+
 	}
 	
 	
