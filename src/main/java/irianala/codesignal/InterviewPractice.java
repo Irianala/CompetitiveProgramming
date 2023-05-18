@@ -1,13 +1,6 @@
 package irianala.codesignal;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class InterviewPractice {
 	public static void main(String[] args) {
@@ -17,8 +10,8 @@ public class InterviewPractice {
 	
 	
 	public static char firstNotRepeatingCharacter(String s) {
-		List<Character> noReapiting = new ArrayList<Character>();
-		Set<Character> charList = new LinkedHashSet<Character>();
+		List<Character> noRepeating = new ArrayList<>();
+		Set<Character> charList = new LinkedHashSet<>();
 		
 		for(int i = 0; i < s.length(); i++) {
 			charList.add(s.charAt(i));
@@ -31,9 +24,9 @@ public class InterviewPractice {
 					counter++;
 				}
 			}
-			if (counter == 1) noReapiting.add(element);
+			if (counter == 1) noRepeating.add(element);
 		}
-		return noReapiting.size() > 0 ? noReapiting.get(0) : '_';
+		return noRepeating.size() > 0 ? noRepeating.get(0) : '_';
 	}
 	
 	public static int[][] rotate(int[][] a) {
@@ -55,7 +48,7 @@ public class InterviewPractice {
 		int matrixSize = grid.length;
 		
 		for(int i = 0; i < matrixSize; i++) {
-			Set<Character> horizontalChars = new HashSet<Character>();
+			Set<Character> horizontalChars = new HashSet<>();
 			for(int j = 0; j < matrixSize; j++) {
 				if (grid[i][j] != '.') {
 					int size = horizontalChars.size();
@@ -66,7 +59,7 @@ public class InterviewPractice {
 		}
 		
 		for(int i = 0; i < matrixSize; i++) {
-			Set<Character> verticalChars = new HashSet<Character>();
+			Set<Character> verticalChars = new HashSet<>();
 			for(int j = 0; j < matrixSize; j++) {
 				if (grid[j][i] != '.') {
 					int size = verticalChars.size();
@@ -82,9 +75,9 @@ public class InterviewPractice {
 		for(int i = 0; i < matrixSize / 3; i++) {
 			for(int j = 0; j < matrixSize / 3; j++) {
 				
-				Set<Character> firstInnerChars = new HashSet<Character>();
-				Set<Character> secondInnerChars = new HashSet<Character>();
-				Set<Character> thirdInnerChars = new HashSet<Character>();
+				Set<Character> firstInnerChars = new HashSet<>();
+				Set<Character> secondInnerChars = new HashSet<>();
+				Set<Character> thirdInnerChars = new HashSet<>();
 				
 				for(int k = index; k < delimiter; k++) {
 					if (grid[j][k] != '.') {
@@ -114,19 +107,17 @@ public class InterviewPractice {
 	}
 
 	public static boolean isCryptSolution(String[] crypt, char[][] solution) {
-		Map<Character, Character> solutions = new HashMap<Character, Character>();
-		Map<Character, Character> reverseSolutions = new HashMap<Character, Character>();
+		Map<Character, Character> solutions = new HashMap<>();
 		for(char[] c:solution) {
 			solutions.put(c[0], c[1]);
-			reverseSolutions.put(c[1], c[0]);
 		}
 		
-		List<String> decryptWord = new ArrayList<String>();
+		List<String> decryptWord = new ArrayList<>();
 		
 		for(String s:crypt) {
 			String temp = "";
 			for(int i = 0; i < s.length(); i++) {
-				temp = temp + String.valueOf(solutions.get(s.charAt(i)));
+				temp = temp + solutions.get(s.charAt(i));
 			}
 			decryptWord.add(temp);
 		}
@@ -136,11 +127,7 @@ public class InterviewPractice {
 				return false;
 				}
 		}
-		
-		if ((Long.parseLong(decryptWord.get(0)) + Long.parseLong(decryptWord.get(1)) == Long.parseLong(decryptWord.get(2)))) {
-			return true;
-		} else {
-			return false;
-		}
+
+		return Long.parseLong(decryptWord.get(0)) + Long.parseLong(decryptWord.get(1)) == Long.parseLong(decryptWord.get(2));
 	}
 }
